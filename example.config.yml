@@ -1,0 +1,30 @@
+clients:
+    - interval: 5000
+      name: "my server"
+      server:
+          host: localhost
+          port: 22
+          socket: /tmp/smon
+          bin: smon-server
+          user: indeedhat
+          ssh:
+              # optional: if not set will fall back to password auth
+              keyfile: ~/.ssh/id_rsa
+              # optional: if used with keyfile it will be the keyfile password
+              # if not set user will be prompted at startup
+              # password: mypass
+      modules:
+          cpu: true
+          memory: true
+          date: true
+          uptime: true
+          network:
+              enable: true
+              # optional: if not set all interfaces will be returned
+              interfaces:
+                  - wlo1
+          disk:
+              - /
+              - /var
+              - /home
+
